@@ -287,12 +287,43 @@ class User
      */
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
-        $metadata->addPropertyConstraint('name', new Assert\NotBlank());
-        $metadata->addPropertyConstraint('surname', new Assert\NotBlank());
-        $metadata->addPropertyConstraint('phone', new Assert\NotBlank());
-        $metadata->addPropertyConstraint('address', new Assert\NotBlank());
-        $metadata->addPropertyConstraint('zip', new Assert\NotBlank());
-        $metadata->addPropertyConstraint('city', new Assert\NotBlank());
+        $metadata->addPropertyConstraints('name', [
+            new Assert\NotBlank(),
+            new Assert\Length([
+                'min' => 2
+            ])
+        ]);
+        $metadata->addPropertyConstraints('surname', [
+            new Assert\NotBlank(),
+            new Assert\Length([
+                'min' => 2
+            ])
+        ]);
+        $metadata->addPropertyConstraints('phone', [
+            new Assert\NotBlank(),
+            new Assert\Regex([
+                'pattern' => '/^\d*$/',
+                'message' => 'Phone should have only digits'
+            ])
+        ]);
+        $metadata->addPropertyConstraints('address', [
+            new Assert\NotBlank(),
+            new Assert\Length([
+                'min' => 2
+            ])
+        ]);
+        $metadata->addPropertyConstraints('zip', [
+            new Assert\NotBlank(),
+            new Assert\Length([
+                'min' => 2
+            ])
+        ]);
+        $metadata->addPropertyConstraints('city', [
+            new Assert\NotBlank(),
+            new Assert\Length([
+                'min' => 2
+            ])
+        ]);
     }
 }
 
