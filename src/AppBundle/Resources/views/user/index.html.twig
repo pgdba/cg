@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a href="{{ path('app_user_add') }}">Add user</a>
+<br />
+<div>
+    {%  if users.getTotalItemCount %}
+        <table>
+            <tr>
+                <th>{{ knp_pagination_sortable(users, 'Id', 'u.id') }}</th>
+                <th>{{ knp_pagination_sortable(users, 'Name and surname', 'u.surname') }}</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }} {{ user.surname }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.address }}<br/>
+                    {{ user.zip }} {{ user.city }}
+                </td>
+                <td>
+                    <a href="{{ path('app_user_edit', {'idUser': user.id}) }}">Edit</a>
+                </td>
+                <td>
+                    <a href="{{ path('app_user_delete', {'idUser': user.id}) }}" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+            {%  endfor %}
+        </table>
+    {% else %}
+        No users yet.
+    {%  endif %}
+</div>
+{%  endblock %}

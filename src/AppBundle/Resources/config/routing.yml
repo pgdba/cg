@@ -1,0 +1,15 @@
+app_user_index:
+    path: /
+    defaults: { _controller: AppBundle:User:index }
+
+app_user_add:
+    path: /user/new
+    defaults: { _controller: AppBundle:User:edit, idUser: null }
+
+app_user_edit:
+    path: /user/{idUser}/edit
+    defaults: { _controller: AppBundle:User:edit }
+
+app_user_delete:
+    path: /user/{idUser}/remove
+    defaults: { _controller: AppBundle:User:delete }

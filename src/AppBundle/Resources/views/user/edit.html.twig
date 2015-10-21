@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div>
+    {{form_start(form)}}
+    <table>
+        <tr>
+            <th>Name</th>
+            <td>
+                {{form_widget(form.name)}}
+                {{form_errors(form.name)}}
+            </td>
+        </tr>
+        <tr>
+            <th>Surname</th>
+            <td>
+                {{form_widget(form.surname)}}
+                {{form_errors(form.surname)}}
+            </td>
+        </tr>
+        <tr>
+            <th>Telephone number</th>
+            <td>
+                {{form_widget(form.phone)}}
+                {{form_errors(form.phone)}}
+            </td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>
+                {{form_widget(form.address)}}
+                {{form_errors(form.address)}}
+            </td>
+        </tr>
+        <tr>
+            <th>Zip code</th>
+            <td>
+                {{form_widget(form.zip)}}
+                {{form_errors(form.zip)}}
+            </td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td>
+                {{form_widget(form.city)}}
+                {{form_errors(form.city)}}
+            </td>
+        </tr>
+        <tr>
+            <th>&nbsp;</th>
+            <td>
+                <input type="submit" value="Save" />
+            </td>
+        </tr>
+    </table>
+    {{form_end(form)}}
+</div>
+{% endblock %}
