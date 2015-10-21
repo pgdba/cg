@@ -32,6 +32,9 @@
             </tr>
             {%  endfor %}
         </table>
+        <br/>
+        {{ knp_pagination_render(users) }}
+
     {% else %}
         No users yet.
     {%  endif %}
