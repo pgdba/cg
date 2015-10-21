@@ -68,7 +68,6 @@ class UserController extends Controller
                 $user->setUpdatedAt(new \DateTime());
             } else {
                 $user->setCreatedAt(new \DateTime());
-                $user->setIsActive(true);
             }
 
             $userRepository->save($user);
@@ -105,7 +104,7 @@ class UserController extends Controller
             );
         }
 
-        $fullName = sprintf('% %s', $user->getName(), $user->getSurname());
+        $fullName = sprintf('%s %s', $user->getName(), $user->getSurname());
 
         $userRepository->remove($user);
 
